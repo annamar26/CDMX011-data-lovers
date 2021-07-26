@@ -1,4 +1,4 @@
-import information from '/data.js'
+import information from './data.js'
 let i;
 let charactersCounter = 0;
 
