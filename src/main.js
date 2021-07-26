@@ -32,9 +32,20 @@ fetch('./data/rickandmorty/rickandmorty.json')
         search.addEventListener('keyup', function() {
             searchValue = document.getElementById('input').value;
             if (searchValue == "") {
-                return showInScreen(data.results)
+                let filterNumber = information.findData(changeSearch(), data.results).length
+                console.log(filterNumber);
+                let showNumber = `<section class='numbers'> There are ${filterNumber}  characters for your selection       
+            </section>`
+
+                return showInScreen((data.results)), document.getElementById('computeStats').innerHTML = showNumber;
+
             } else {
-                return showInScreen((information.findData(changeSearch(), data.results)))
+                let filterNumber = information.findData(changeSearch(), data.results).length
+                console.log(filterNumber);
+                let showNumber = `<section class='numbers'> There are ${filterNumber}  characters for your selection       
+            </section>`
+
+                return showInScreen((information.findData(changeSearch(), data.results))), document.getElementById('computeStats').innerHTML = showNumber;
             }
         })
 
