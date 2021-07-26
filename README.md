@@ -6,7 +6,7 @@
 * [2. Historias de usuario](#2-historias-de-usuario)
 * [3. Captura del proyecto final](#3-captura-del-proyecto-final)
 * [4. Prototipo de alta fidelidad](#4-prototipo-de-alta-fidelidad)
-* [5. Link a Zeplin](#5-link-a-zeplin)
+* [5. Link a Figma](#5-link-a-figma)
 * [6. Prototipo de baja fidelidad](#6-prototipo-de-baja-fidelidad)
 * [7. Resultados de test de usabilidad](#7-resultados-de-test-de-usabilidad)
 * [8. Indicadores](#8-indicadores)
@@ -37,7 +37,8 @@ personajes que aparecen en pantalla
 
 ![Imagen del prototipo de alta fidelidad](PrototipoFigma.png)
 
-## 5. Link a Zeplin
+## 5. Link a Figma
+[Link a figma](https://www.figma.com/file/eN44KQcv6jF43lGHLN5D34/Prototipo-Rickcionary?node-id=2%3A4)
 
 
 ## 6. Prototipo de baja fidelidad
