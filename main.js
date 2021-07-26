@@ -1,17 +1,47 @@
-import data from './data/rickandmorty/rickandmorty.js';
-import information from './data.js';
-
-
-
-let charactersCounter = 0;
+import information from '/data.js'
 let i;
-const character = data.results
+let charactersCounter = 0;
+
+
+fetch('./data/rickandmorty/rickandmorty.json')
+    .then(response => response.json())
+    .then(data => {
+        showInScreen(data.results)
+        changeSearch(searchValue)
+        let filterNUmber = information.filterData(data.results, parseInt(filterValue)).length
+        console.log(filterNUmber)
 
 
 
+        sort.addEventListener('click', function() {
+            filterValue = document.getElementById('filter').value;
+            sortValue = document.getElementById('sort').value;
+            return showInScreen(information.filterData(information.sortData(data.results, parseInt(sortValue)), parseInt(filterValue)))
+        })
 
-//const next = document.getElementById('next');
-//const prev = document.getElementById('prev');
+        filter.addEventListener('click', function() {
+            filterValue = document.getElementById('filter').value;
+            let filterNumber = information.filterData(data.results, parseInt(filterValue)).length
+            console.log(filterNumber);
+            let showNumber = `<section class='numbers'> There are ${filterNumber}  characters for your selection       
+            </section>`
+            return showInScreen(information.filterData(data.results, parseInt(filterValue))), document.getElementById('computeStats').innerHTML = showNumber;
+
+        })
+
+        search.addEventListener('keyup', function() {
+            searchValue = document.getElementById('input').value;
+            if (searchValue == "") {
+                return showInScreen(data.results)
+            } else {
+                return showInScreen((information.findData(changeSearch(), data.results)))
+            }
+        })
+
+
+    })
+
+
 const sort = document.getElementById('sort');
 const filter = document.getElementById('filter');
 const search = document.getElementById('input')
@@ -19,52 +49,11 @@ let searchValue = document.getElementById('input').value;
 let filterValue = document.getElementById('filter').value;
 let sortValue = document.getElementById('sort').value;
 
-///const newArray = Array.from(information.filterData(character, parseInt(filterValue)))
-//console.log(newArray)
 
-
-window.onload = function() {
-    showInScreen(information.sortData(character, 3))
-    changeSearch(searchValue)
-}
-
-/*next.addEventListener('click', forward())
-
-function forward() {
-    charactersCounter += 9
-    showInScreen(information.filterData(information.sortData(character, parseInt(sortValue)), parseInt(filterValue)))
-
-}
-
-prev.addEventListener('click', backward())
-
-function backward() {
-    charactersCounter -= 9
-    showInScreen(information.filterData(information.sortData(character, parseInt(sortValue)), parseInt(filterValue)))
-
-}*/
-
-sort.addEventListener('click', function() {
-    filterValue = document.getElementById('filter').value;
-    sortValue = document.getElementById('sort').value;
-    return showInScreen(information.filterData(information.sortData(character, parseInt(sortValue)), parseInt(filterValue)))
-})
-
-filter.addEventListener('click', function() {
-    filterValue = document.getElementById('filter').value;
-    return showInScreen(information.filterData(character, parseInt(filterValue)))
-})
-
-search.addEventListener('keyup', function() {
-    searchValue = document.getElementById('input').value;
-    if (searchValue == "") {
-        return showInScreen(character)
-    } else {
-        return showInScreen((information.findData(changeSearch(), character)))
-    }
-})
 
 function showInScreen(arreglo) {
+
+
 
     let newHTML = "";
     for (i = 0; i < arreglo.length; i++) {
@@ -82,7 +71,10 @@ function showInScreen(arreglo) {
                         <p><span class='keys'>Origin: </span>${arreglo[i+charactersCounter].origin.name}</p>
                         </section>
                     </div>`
+
+
     }
+
     return document.getElementById("characters").innerHTML = newHTML, changeColor()
 }
 
@@ -90,6 +82,7 @@ function showInScreen(arreglo) {
 
 
 function changeColor() {
+
 
     const pointElements = document.querySelectorAll('.dot')
     for (i = 0; i < pointElements.length; i++) {
